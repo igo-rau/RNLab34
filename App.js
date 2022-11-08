@@ -25,17 +25,23 @@ export default function App() {
   }
 
   function deleteGoalHandler(id) {
-    setCourseGoals(currentCourseGoals => {
-      return currentCourseGoals.filter((goal)=>goal.id !== id);
+    setCourseGoals((currentCourseGoals) => {
+      return currentCourseGoals.filter((goal) => goal.id !== id);
     });
   }
 
   return (
     <View style={styles.appContainer}>
-      <Button title="Add New Goal" color='#00f' onPress={startAddGoalHandler}/>
-      <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler} onCancel={endAddGoalHandler} />
+      <Button title="Add New Goal" color="#00f" onPress={startAddGoalHandler} />
+      <GoalInput
+        visible={modalIsVisible}
+        onAddGoal={addGoalHandler}
+        onCancel={endAddGoalHandler}
+      />
 
-      <Text style={styles.dummyText}>Igor Rautiainen Lab34!</Text>
+      <View style={styles.dummyText}>
+        <Text >Igor Rautiainen Lab3&4</Text>
+      </View>
 
       <View style={styles.goalsContainer}>
         <FlatList
@@ -68,5 +74,12 @@ const styles = StyleSheet.create({
 
   goalsContainer: {
     flex: 5,
+  },
+
+  dummyText: {
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
