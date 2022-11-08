@@ -31,7 +31,11 @@ export default function App() {
       <Text style={styles.dummyText}>Igor Rautiainen Lab34!</Text>
 
       <View style={styles.goalsContainer}>
-        {courseGoals.map((goal) => <Text key={goal}>{goal}</Text> )}
+        {courseGoals.map((goal) => (
+          <View key={goal} style={styles.goalItem}>
+            <Text style={styles.goalItemText}>{goal}</Text>
+          </View>
+        ))}
       </View>
     </View>
   );
@@ -62,17 +66,15 @@ const styles = StyleSheet.create({
   goalsContainer: {
     flex: 5,
   },
+  goalItem: {
+    margin: 8,
+    padding: 8,
+    borderRadius: 6, //not working for ios if applied to <Text>, so we should wrap into <View>
+    backgroundColor: '#00f',
+  },
 
-  // container: {
-  //   flex: 1,
-  //   backgroundColor: "#fff",
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  // },
-  // dummyText: {
-  //   margin: 16,
-  //   borderWidth: 2,
-  //   borderColor: "#F88",
-  //   padding: 16,
-  // },
+  goalItemText: {
+    color: 'white'  // Styles are not cascading, so if applied to parent <View> - will have no effect. 
+  }
+
 });
